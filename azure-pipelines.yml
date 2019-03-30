@@ -18,7 +18,7 @@ steps:
     displayName: 'sudo apt-get remove mysql-server-5.7'
   
   - script: netstat -an | grep 3306
-    displayName: 'netstat -an | grep 3306'    
+    displayName: 'netstat -an | grep 3306'
 
   - task: DockerInstaller@0
  
@@ -29,4 +29,4 @@ steps:
     displayName: 'start mysql'
 
   - script: docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' -p -d mcr.microsoft.com/mssql/server:2017-latest
-    displayName: 'start sqlserver'      
+    displayName: 'start sqlserver'
