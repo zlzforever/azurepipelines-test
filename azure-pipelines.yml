@@ -16,11 +16,11 @@ steps:
 
   - task: DockerInstaller@0
  
-  - script: docker pull mysql
+  - script: sudo docker pull mysql
     displayName: 'pull mysql image'
 
-  - script: docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1qazZAQ! -d mysql
+  - script: sudo docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1qazZAQ! -d mysql
     displayName: 'start mysql'
 
-  - script: docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' -p -d mcr.microsoft.com/mssql/server:2017-latest
+  - script: sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' -p -d mcr.microsoft.com/mssql/server:2017-latest
     displayName: 'start sqlserver'
