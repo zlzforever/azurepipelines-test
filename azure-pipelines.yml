@@ -12,15 +12,12 @@ pool:
 
 steps:
   - script: sudo apt-get remove mysql-server-5.7
-    displayName: 'sudo apt-get remove mysql-server-5.7'
+    displayName: 'uninstall default mysql'
 
   - task: DockerInstaller@0
  
-  - script: sudo docker pull mysql
-    displayName: 'pull mysql image'
-
   - script: sudo docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1qazZAQ! -d mysql
-    displayName: 'start mysql'
+    displayName: 'deploy mysql'
 
   - script: sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
-    displayName: 'start sqlserver'
+    displayName: 'deploy sqlserver'
