@@ -11,14 +11,8 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-  - script: netstat -an | grep 3306
-    displayName: 'netstat -an | grep 3306'
-
   - script: sudo apt-get remove mysql-server-5.7
     displayName: 'sudo apt-get remove mysql-server-5.7'
-  
-  - script: netstat -an | grep 3306
-    displayName: 'netstat -an | grep 3306'
 
   - task: DockerInstaller@0
  
