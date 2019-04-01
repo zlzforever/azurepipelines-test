@@ -16,13 +16,13 @@ steps:
 
   - task: DockerInstaller@0
  
-  - script: sudo docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1qazZAQ! -d mysql
+  - script: sudo docker run --name mysql     -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1qazZAQ! mysql
     displayName: 'MySqlInstaller'
 
-  - script: sudo docker run -e --name sqlserver2017 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
+  - script: sudo docker run --name sqlserver -d -p 1433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' mcr.microsoft.com/mssql/server:2017-latest
     displayName: 'SqlServerInstaller'
 
-  - script: sudo docker run -d --name kafka --net bridge -p 2181:2181 -p 9092:9092 --env ADVERTISED_PORT=9092 spotify/kafka
+  - script: sudo docker run --name kafka     -d -p 2181:2181 -p 9092:9092 --net bridge --env ADVERTISED_PORT=9092 spotify/kafka
     displayName: 'KafkaInstaller'    
 
   - script: sudo docker logs kafka
